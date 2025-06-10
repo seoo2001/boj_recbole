@@ -116,7 +116,7 @@ class KD_DAGFM(ContextRecommender):
 class DAGFM(nn.Module):
     def __init__(self, config):
         super(DAGFM, self).__init__()
-        if torch.cuda.is_available():
+        if torch.cuda.is_available() or config["device"] == 'mps':
             self.device = torch.device("cuda")
         else:
             self.device = torch.device("cpu")
